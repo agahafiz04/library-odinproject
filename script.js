@@ -1,5 +1,6 @@
-// Initialization
-const myLibrary = [];
+const myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
+
+console.log(myLibrary);
 
 const addButtonModalEl = document.querySelector(".add-button-modal");
 const formEl = document.querySelector(".input-container");
@@ -153,6 +154,9 @@ function createCard() {
     newButtonRead.textContent = "Read ?";
     newButtonRemove.textContent = "Remove";
   });
+
+  const stringifyMyLibrary = JSON.stringify(myLibrary);
+  localStorage.setItem("myLibrary", stringifyMyLibrary);
 }
 
 function checkCardEl() {
@@ -202,7 +206,6 @@ function checkCardEl() {
   if (myLibrary.length >= 0) {
     removeButtonEl.forEach((removeButton) => {
       removeButton.addEventListener("click", function () {
-        console.log("Woy Remove");
         const card = removeButton.parentElement;
 
         const title = card.children[0].textContent;
@@ -217,8 +220,6 @@ function checkCardEl() {
             checkCardEl();
           }
         });
-
-        console.log(myLibrary);
       });
     });
   }
@@ -274,11 +275,3 @@ function modalDisplay(modalChange) {
     }
   });
 }
-
-// Todo List
-
-// Get the array object based on the card (V)
-// Implement isRead Object Properties To Change From The Click Button (V)
-// Change the readvalue from the click button (V)
-// Implement remove option for per card based on the object (V)
-// Implement localStorage
