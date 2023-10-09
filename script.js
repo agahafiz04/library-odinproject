@@ -197,6 +197,9 @@ function checkCardEl() {
             obj.read = "false";
           }
         });
+
+        const stringifyMyLibrary = JSON.stringify(myLibrary);
+        localStorage.setItem("myLibrary", stringifyMyLibrary);
       });
     });
   }
