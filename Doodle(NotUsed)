@@ -1,0 +1,18 @@
+// The Dom Manipulations
+// if (myLibrary.length >= 1) {
+//   const readButtonEl = document.querySelectorAll(".read-button");
+//   // readButtonEl.forEach((button) => {
+// //   button.addEventListener("click", function () {
+// //     if (button.className.includes("false")) {
+// //       console.log("test");
+// //       // console.log("how");
+// //       // button.classList.add("true");
+// //       // button.classList.remove("false");
+// //     } else {
+// //       // console.log("test");
+// //       // button.classList.remove("true");
+// //       // button.classList.add("false");
+// //     }
+// //   });
+// // });
+// }

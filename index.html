@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Apps</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/a836538f8f.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header">
+        <h1>Library Apps</h1>
+      </div>
+
+      <div class="main">
+        <div>
+          <button class="add-button">+ Add a new book</button>
+          <button class="dummy-button">+ Dummy Book</button>
+        </div>
+
+        <div class="card-container">
+          <!-- <div class="card 1">
+            <p>This is the title</p>
+            <p>This is the pages</p>
+            <p>This is the author</p>
+            <button class="read-button false">Read ?</button>
+            <button class="remove-button">Remove</button>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          Copyright&copy; agahafiz04
+          <a href="https://github.com/agahafiz04" target="_blank"
+            ><i class="fa-brands fa-github-alt" style="color: #000000"></i
+          ></a>
+        </p>
+      </div>
+
+      <div class="modal hidden">
+        <h1>Book Information</h1>
+        <form name="book-form" action="" method="post" class="input-container">
+          <input
+            required
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title"
+          />
+          <input
+            required
+            type="text"
+            name="author"
+            id="author"
+            placeholder="Author"
+          />
+          <input
+            required
+            type="number"
+            name="page"
+            id="page"
+            placeholder="Pages"
+          />
+          <label for="isRead"
+            >Have you read it?
+            <input type="checkbox" name="isRead" id="isRead" />
+          </label>
+          <button type="submit" class="add-button-modal">
+            Insert New Book
+          </button>
+        </form>
+      </div>
+
+      <div class="overlay hidden"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;500;700&display=swap");
+
+:root {
+  --color-1: rgb(100, 153, 233);
+  --color-2: rgb(158, 221, 255);
+  --color-3: rgb(166, 246, 255);
+  --color-4: rgb(190, 255, 247);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  font-size: 1.2rem;
+}
+
+img,
+video,
+svg,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+/* Main Container Styling */
+.main-container {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 75px 1fr 75px;
+}
+
+.header,
+.footer {
+  background-color: var(--color-3);
+}
+
+.main-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-1);
+}
+
+/* Main Styling */
+.main {
+  background-color: var(--color-2);
+}
+
+.card-container {
+  height: 100%;
+  width: 100%;
+
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-auto-rows: 250px;
+  gap: 10px;
+}
+
+.card-container-change {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
+}
+
+.card {
+  --color-4: rgba(205, 245, 240, 0.897);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px var(--color-1);
+  background-color: var(--color-4);
+}
+
+.card p:nth-of-type(1) {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+div.card button {
+  margin-top: 0px;
+  width: 90%;
+}
+
+div.card .remove-button {
+  background-color: rgb(192, 184, 184);
+}
+
+div.card .remove-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.read-button.true {
+  background-color: rgb(172, 255, 47);
+  color: black;
+}
+
+.read-button.true:hover {
+  background-color: rgba(172, 255, 47, 0.452);
+  color: white;
+}
+
+.read-button.false {
+  background-color: red;
+  color: black;
+}
+
+.read-button.false:hover {
+  background-color: rgba(255, 0, 0, 0.603);
+  color: white;
+}
+
+button {
+  font-size: 1.1rem;
+  margin-top: 25px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  background-color: var(--color-1);
+  color: var(--color-4);
+  cursor: pointer;
+}
+
+.main button:hover {
+  color: var(--color-1);
+  background-color: var(--color-4);
+}
+
+/* Modal Styling*/
+.modal {
+  --color-2: rgb(204, 237, 255);
+  z-index: 1;
+
+  padding: 25px 0px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 350px;
+  height: 350px;
+  background-color: var(--color-2);
+
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px var(--color-1);
+  gap: 10px;
+}
+
+.modal h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 35px;
+}
+
+.modal :is(input[type="text"], input[type="number"]) {
+  font-family: inherit;
+  color: inherit;
+  font-size: 1.2rem;
+  border: 2px solid var(--color-2);
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px;
+}
+
+::placeholder {
+  color: inherit;
+  opacity: 0.5; /* Firefox */
+}
+
+.modal :is(input[type="text"], input[type="number"]):focus {
+  outline: none;
+  border: 2px solid var(--color-1);
+}
+
+.modal :is(input[type="text"], input[type="number"]):invalid {
+  background-color: var(--color-4);
+  color: black;
+}
+
+.modal label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal input[type="checkbox"] {
+  appearance: none;
+  position: relative;
+  bottom: 1px;
+  border: 2px solid white;
+  border-radius: 4px;
+  vertical-align: -2px;
+  width: 20px;
+  height: 20px;
+  color: var(--color-1);
+}
+
+.modal input[type="checkbox"]::before {
+  content: "✔";
+  position: absolute;
+  font-size: 1.6rem;
+  right: -4px;
+  top: -0.3em;
+  visibility: hidden;
+}
+
+.modal input[type="checkbox"]:checked::before {
+  visibility: visible;
+}
+
+.modal button {
+  font-weight: bolder;
+  margin-top: 15px;
+  padding: 10px 40px;
+}
+
+.modal button:hover {
+  color: var(--color-1);
+  background-color: var(--color-4);
+}
+
+.input-container {
+  width: 100%;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+}
+
+.hidden {
+  display: none !important;
+}
