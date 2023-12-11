@@ -8,8 +8,7 @@
     <script src="script.js" defer></script>
     <script
       src="https://kit.fontawesome.com/a836538f8f.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="main-container">
@@ -51,22 +50,27 @@
             type="text"
             name="title"
             id="title"
-            placeholder="Title"
-          />
+            minlength="3"
+            maxlength="16"
+            pattern="([A-Z])\w+"
+            placeholder="Title" />
           <input
             required
             type="text"
             name="author"
             id="author"
-            placeholder="Author"
-          />
+            minlength="3"
+            maxlength="10"
+            pattern="([A-Z])\w+"
+            placeholder="Author" />
           <input
             required
             type="number"
             name="page"
             id="page"
-            placeholder="Pages"
-          />
+            min="10"
+            max="3000"
+            placeholder="Pages" />
           <label for="isRead"
             >Have you read it?
             <input type="checkbox" name="isRead" id="isRead" />

@@ -1,7 +1,5 @@
 const myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 
-console.log(myLibrary);
-
 const addButtonModalEl = document.querySelector(".add-button-modal");
 const formEl = document.querySelector(".input-container");
 
@@ -23,7 +21,7 @@ formEl.addEventListener("submit", (e) => {
 });
 
 addButtonModalEl.addEventListener("click", function () {
-  addBookToLibrary();
+  checkValiditySubmit();
 });
 
 addButtonEl.addEventListener("click", function () {
@@ -57,59 +55,93 @@ createCard();
 checkCardEl();
 
 // Function Collection
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = isRead;
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = isRead;
+  }
 
-  // this.isRead = function () {
-  //   if (isRead == true) {
-  //     this.read = "true";
-  //   } else if (isRead == false) {
-  //     this.read = "false";
-  //   }
-  // };
-
-  // this.info = function () {
-  //   return `${title} by ${author}, ${pages} pages, ${this.read}`;
-  // };
+  isRead() {
+    if (isRead == true) {
+      this.read = "true";
+    } else if (isRead == false) {
+      this.read = "false";
+    }
+  }
+  info() {
+    return `${title} by ${author}, ${pages} pages, ${this.read}`;
+  }
 }
 
-Book.prototype.isRead = function () {
-  if (isRead == true) {
-    this.read = "true";
-  } else if (isRead == false) {
-    this.read = "false";
-  }
-};
+titleInputEl.addEventListener("input", checkValidityInput);
+authorInputEl.addEventListener("input", checkValidityInput);
+pageNumberInputEl.addEventListener("input", checkValidityInput);
 
-Book.prototype.info = function () {
-  return `${title} by ${author}, ${pages} pages, ${this.read}`;
-};
+function checkValidityInput(event) {
+  const currentInput = event.target;
+
+  if (currentInput.id === "title") {
+    if (currentInput.validity.patternMismatch) {
+      currentInput.setCustomValidity(
+        'First Capital Letter (Example: "Harry Potter")'
+      );
+    } else if (currentInput.validity.maxLength) {
+    } else {
+      currentInput.setCustomValidity("");
+      return true;
+    }
+  }
+
+  if (currentInput.id === "author") {
+    if (currentInput.validity.patternMismatch) {
+      currentInput.setCustomValidity(
+        'First Capital Letter (Example: "JK.Rowling")'
+      );
+    } else if (currentInput.validity.maxLength) {
+    } else {
+      currentInput.setCustomValidity("");
+      return true;
+    }
+  }
+
+  if (currentInput.id === "page") {
+    if (currentInput.validity.rangeOverflow) {
+      currentInput.setCustomValidity("Exceeding Page Number! (Max: 3000)");
+    } else if (currentInput.validity.rangeUnderflow) {
+      currentInput.setCustomValidity("Page Number Is To Low! (Min: 10)");
+    } else {
+      currentInput.setCustomValidity("");
+      return true;
+    }
+  }
+}
+
+function checkValiditySubmit() {
+  if (
+    titleInputEl.validity.valid &&
+    authorInputEl.validity.valid &&
+    pageNumberInputEl.validity.valid
+  ) {
+    addBookToLibrary();
+  }
+}
 
 function addBookToLibrary() {
-  if (
-    authorInputEl.value == "" ||
-    titleInputEl.value == "" ||
-    pageNumberInputEl.value == ""
-  ) {
-    return false;
-  } else {
-    let book = new Book(
-      `${titleInputEl.value}`,
-      `${authorInputEl.value}`,
-      `${pageNumberInputEl.value}`,
-      `${isReadEl.checked}`
-    );
+  let book = new Book(
+    `${titleInputEl.value}`,
+    `${authorInputEl.value}`,
+    `${pageNumberInputEl.value}`,
+    `${isReadEl.checked}`
+  );
 
-    myLibrary.push(book);
+  myLibrary.push(book);
 
-    createCard();
-    checkCardEl();
-    resetForm();
-    modalDisplay("closeModal");
-  }
+  createCard();
+  checkCardEl();
+  resetForm();
+  modalDisplay("closeModal");
 }
 
 function createCard() {
